@@ -16,7 +16,7 @@ void handleInputEvents()
         spaceship->incAngle();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         spaceship->decAngle();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && spaceship->availableToShot())
         entities.push_back(spaceship->shoot());
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         spaceship->throttleFull();
@@ -67,6 +67,8 @@ int main()
                 window.draw(bullet->draw());
             }
         }
+        
+        spaceship->cadenceDown();
         window.display();
     }
 

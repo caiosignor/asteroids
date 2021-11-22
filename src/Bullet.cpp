@@ -10,7 +10,7 @@ Bullet::Bullet(float x, float y, float angle, int x_limit, int y_limit) : x_limi
     Entity::x = x;
     Entity::y = y;
     Entity::angle = angle;
-    Entity::anim = new Animation("../images/rock.png", 0, 0, 32, 64, 16, 15);
+    Entity::anim = new Animation("../images/fire_blue.png", 0, 0, 32, 64, 16, 15);
     Entity::name = "bullet";
 }
 

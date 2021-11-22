@@ -6,6 +6,7 @@ class Spaceship : public Entity
 {
 private:
     int x_limit, y_limit, speed_limit;
+    int cadence;// cadence of the ship
     bool thrust;
     void update_position();
 
@@ -17,5 +18,7 @@ public:
     void decAngle();
     void throttleFull();
     void throttleRelease();
+    void cadenceDown();
+    bool availableToShot();
     Bullet* shoot();
 };
