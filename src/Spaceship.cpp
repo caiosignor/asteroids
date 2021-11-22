@@ -16,7 +16,7 @@ Spaceship::Spaceship(std::string texture_path, int x_limit, int y_limit, int spe
 
 void Spaceship::update_position()
 {
-    float accelaration = 0.2;
+    float accelaration = 0.1;
     float deaccelaration = 0.99;
 
     if (thrust)
@@ -81,7 +81,7 @@ void Spaceship::throttleRelease()
 Bullet *Spaceship::shoot()
 {
     this->cadence = 15;
-    return new Bullet(Entity::x, Entity::y, Entity::angle, x_limit, y_limit);
+    return new Bullet(Entity::x, Entity::y, Entity::angle, x_limit, y_limit, this->dx);
 }
 
 void Spaceship::cadenceDown()
