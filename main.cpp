@@ -4,6 +4,7 @@
 #include "inc/Animation.h"
 #include "inc/Entity.h"
 #include "inc/Asteroid.h"
+#include "inc/Explosion.h"
 #include <list>
 #include <iostream>
 const int WIDTH = 1200;
@@ -41,7 +42,7 @@ int main()
 
     entities.push_back(spaceship);
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 15; i++)
         entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
 
     while (window.isOpen())
@@ -69,6 +70,7 @@ int main()
                     {
                         a->life = false;
                         b->life = false;
+                        entities.push_back(new Explosion(b->x, b->y));
                     }
                 }
             }
@@ -101,6 +103,11 @@ int main()
             {
                 Asteroid *asteroid = (Asteroid *)ent;
                 window.draw(asteroid->draw());
+            }
+            if (ent->name == std::string("explosion"))
+            {
+                Explosion *explosion = (Explosion *)ent;
+                window.draw(explosion->draw());
             }
         }
 
