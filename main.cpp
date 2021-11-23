@@ -4,6 +4,8 @@
 #include "inc/Animation.h"
 #include "inc/Entity.h"
 #include <list>
+#include <iostream>
+
 const int WIDTH = 1200;
 const int HEIGHT = 800;
 
@@ -53,6 +55,17 @@ int main()
 
         window.clear();
         window.draw(sBackground);
+        
+        for (auto i = entities.begin(); i != entities.end();)
+        {
+            Entity *entity = *i;
+            if (!entity->life)
+            {
+                i = entities.erase(i);
+            }
+            else
+                i++;
+        }
 
         for (auto ent : entities)
         {
@@ -67,7 +80,7 @@ int main()
                 window.draw(bullet->draw());
             }
         }
-        
+
         spaceship->cadenceDown();
         window.display();
     }
