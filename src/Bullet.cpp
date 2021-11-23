@@ -12,6 +12,7 @@ Bullet::Bullet(float x, float y, float angle, int x_limit, int y_limit, int spee
     Entity::angle = angle;
     Entity::anim = new Animation("../images/fire_blue.png", 0, 0, 32, 64, 16, 15);
     Entity::name = "bullet";
+    Entity::R = 10;
 }
 
 sf::Sprite Bullet::draw()

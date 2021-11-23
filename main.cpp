@@ -41,7 +41,7 @@ int main()
 
     entities.push_back(spaceship);
 
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 1; i++)
         entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
 
     while (window.isOpen())
@@ -58,6 +58,21 @@ int main()
 
         window.clear();
         window.draw(sBackground);
+
+        for (auto a : entities)
+        {
+            for (auto b : entities)
+            {
+                if (a->name == "bullet" && b->name == "asteroid")
+                {
+                    if (a->collision(b))
+                    {
+                        a->life = false;
+                        b->life = false;
+                    }
+                }
+            }
+        }
 
         for (auto i = entities.begin(); i != entities.end();)
         {
