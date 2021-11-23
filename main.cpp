@@ -3,9 +3,9 @@
 #include "inc/Spaceship.h"
 #include "inc/Animation.h"
 #include "inc/Entity.h"
+#include "inc/Asteroid.h"
 #include <list>
 #include <iostream>
-
 const int WIDTH = 1200;
 const int HEIGHT = 800;
 
@@ -41,6 +41,9 @@ int main()
 
     entities.push_back(spaceship);
 
+    for (int i = 0; i < 25; i++)
+        entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
+
     while (window.isOpen())
     {
         // Process events
@@ -55,7 +58,7 @@ int main()
 
         window.clear();
         window.draw(sBackground);
-        
+
         for (auto i = entities.begin(); i != entities.end();)
         {
             Entity *entity = *i;
@@ -78,6 +81,11 @@ int main()
             {
                 Bullet *bullet = (Bullet *)ent;
                 window.draw(bullet->draw());
+            }
+            if (ent->name == std::string("asteroid"))
+            {
+                Asteroid *asteroid = (Asteroid *)ent;
+                window.draw(asteroid->draw());
             }
         }
 

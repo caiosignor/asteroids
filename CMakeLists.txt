@@ -15,7 +15,7 @@ find_package(SFML 2.5
   )
 
 # Compile executable
-add_executable(asteroids main.cpp "src/Spaceship.cpp" "src/Animation.cpp" "src/Entity.cpp" "src/Bullet.cpp")
+add_executable(asteroids main.cpp "src/Spaceship.cpp" "src/Animation.cpp" "src/Entity.cpp" "src/Bullet.cpp" "src/Asteroid.cpp")
 
 # Set include directory search paths
 target_include_directories(asteroids 
