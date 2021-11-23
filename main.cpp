@@ -71,6 +71,7 @@ int main()
                         a->life = false;
                         b->life = false;
                         entities.push_back(new Explosion(b->x, b->y));
+                        entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
                     }
                 }
             }

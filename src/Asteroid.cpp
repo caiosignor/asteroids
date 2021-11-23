@@ -20,8 +20,8 @@ Asteroid::Asteroid(float x, float y, int x_limit, int y_limit) : x_limit(x_limit
 
 sf::Sprite Asteroid::draw()
 {
-    //Entity::x += dx;
-    //Entity::y += dy;
+    Entity::x += dx;
+    Entity::y += dy;
 
     if (x > x_limit || x < 0 || y > y_limit || y < 0)
         life = 0;
