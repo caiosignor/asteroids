@@ -11,6 +11,7 @@ private:
 public:
     Explosion();
     Explosion(float x, float y);
+    Explosion(sf::Texture t, sf::Sprite s, float x, float y);
     Explosion(int x_limit, int y_limit, float speed_limit);
     sf::Sprite draw();
 };

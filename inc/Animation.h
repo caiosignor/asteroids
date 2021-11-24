@@ -15,6 +15,7 @@ public:
    Animation();
 
    Animation(std::string textureFileName, int x, int y, int w, int h, int count, float Speed);
+   Animation(sf::Texture texture, sf::Sprite sp, int x, int y, int w, int h, int count, float Speed);
    sf::Sprite update();
    bool isEnd();
 };

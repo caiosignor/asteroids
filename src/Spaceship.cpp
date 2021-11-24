@@ -9,14 +9,14 @@ Spaceship::Spaceship(){
 Spaceship::Spaceship(std::string texture_path, int x_limit, int y_limit, int speed_limit) : x_limit(x_limit), y_limit(y_limit), speed_limit(speed_limit)
 {
     Entity::name = "spaceship";
-    this->cadence = 15;
+    this->cadence = 0;
     this->anim = new Animation(texture_path, 40, 0, 40, 40, 1, 0);
     this->thrust = false;
 };
 
 void Spaceship::update_position()
 {
-    float accelaration = 0.1;
+    float accelaration = 0.099;
     float deaccelaration = 0.99;
 
     if (thrust)

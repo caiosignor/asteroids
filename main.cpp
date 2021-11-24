@@ -13,6 +13,11 @@ const int HEIGHT = 800;
 Spaceship *spaceship = new Spaceship("../images/spaceship.png", WIDTH - 10, HEIGHT - 10, 15);
 std::list<Entity *> entities;
 
+void createAsteroid()
+{
+    entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
+}
+
 void handleInputEvents()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -34,16 +39,17 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Asteroids");
     window.setFramerateLimit(60);
 
-    sf::Texture tBackground;
+    sf::Texture tBackground, tExplosion;
 
     tBackground.loadFromFile("../images/background.jpg");
+    tExplosion.loadFromFile("../images/explosions/type_C.png");
 
-    sf::Sprite sBackground(tBackground);
+    sf::Sprite sBackground(tBackground), sExplosion(tExplosion);
 
     entities.push_back(spaceship);
 
     for (int i = 0; i < 15; i++)
-        entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
+        createAsteroid();
 
     while (window.isOpen())
     {
@@ -70,8 +76,7 @@ int main()
                     {
                         a->life = false;
                         b->life = false;
-                        entities.push_back(new Explosion(b->x, b->y));
-                        entities.push_back(new Asteroid(rand() % WIDTH, rand() % HEIGHT, WIDTH, HEIGHT));
+                        entities.push_back(new Explosion(tExplosion, sExplosion, a->x, b->y));
                     }
                 }
             }
@@ -82,6 +87,8 @@ int main()
             Entity *entity = *i;
             if (!entity->life)
             {
+                if (entity->name == "asteroid")
+                    createAsteroid();
                 i = entities.erase(i);
             }
             else
